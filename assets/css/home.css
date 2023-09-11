@@ -1,0 +1,97 @@
+body{
+    margin: 0;
+    color: aliceblue;
+    background: linear-gradient(90deg, #153677, #4e085f);
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.form_class{
+    background-color: aliceblue;
+    height: 300px;
+    width: 400px;
+    margin: auto;
+    border-radius: 5%;
+}
+
+.desc{
+    width: 300px;
+    background-color: aliceblue;
+    padding: 4%;
+    margin: 30px;
+    border-color: #153677;
+    border-radius: 10px;
+}
+
+.desc:hover{
+    cursor: pointer;
+    background-color: whitesmoke;
+}
+
+.select_and_input{
+    display: flex;
+    justify-content: space-around;
+}
+
+.option{
+    color: #153677;
+    background-color: aliceblue;
+    border-color: #153677;
+    border-radius: 10px;
+    height: 35px;
+    width: 150px;
+    margin: 10px;
+}
+
+.option:hover{
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.datesValues{
+    color: #153677;
+    background-color: aliceblue;
+    border-color: #153677;
+    border-radius: 10px;
+    height: 30px;
+    width: 140px;
+    margin: 10px;
+}
+
+.datesValues:hover{
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.buttonDesign{
+    
+    outline: 0;
+    grid-gap: 8px;
+    align-items: center;
+    background-color: #749be8;
+    color: aliceblue;
+    border: 1px solid #000;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 0;
+    font-size: 16px;
+    gap: 8px;
+    justify-content: center;
+    line-height: 1.5;
+    overflow: hidden;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all .14s ease-out;
+    white-space: nowrap;
+    margin: 20px;
+}
+
+.buttonDesign:hover {
+    box-shadow: 4px 4px 0 #000;
+    transform: translate(-4px,-4px);
+}
+.buttonDesign:focus-visible{
+    outline-offset: 1px;
+}
