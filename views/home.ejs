@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> title </title>
+    <title>Todo List</title>
     <link rel="stylesheet" href="../assets/css/home.css">
 </head>
 <body>
     <h1 id="todoList-header"><i class="fa-solid fa-list-check" style="color: aliceblue;"></i> Todo List </h1>
+    
+    <!-- Display success message if available -->
+    <% if (successMessage) { %>
+        <div class="success-message">
+            <%= successMessage %>
+        </div>
+    <% } %>
+
     <div class="form_class">
         <form action="/create_todo" method="POST">
             <div class="desc_Class">
-                <input type="textarea" required class="desc" placeholder="Tasks you want to add.."> 
+                <input type="textarea" required class="desc" name="desc" placeholder="Tasks you want to add.."> 
             </div>
             <div class="select_and_input">
                 <select class="option" name="category" required>
@@ -22,10 +30,27 @@
                     <option>Hobbies</option>
                     <option>Others</option>
                 </select>
-                <input class="datesValues" type="date" name="dateValue" placeholder="Due data dd/mm/yyyy" required>
+                <input class="datesValues" type="date" name="dateValue" placeholder="Due date dd/mm/yyyy" required>
             </div>
             <button class="buttonDesign" id="submitButton" type="submit"><i class="fa fa-plus-square" > </i> Add Task</button>
         </form>
+    </div>
+
+    <div id="todo-list-container">
+        <% for(let i of todoList) { %> 
+            <div class="task-container">
+                <ul class="task-details">
+                    <li><i class="fa-solid fa-person"></i> <%= i.desc %></li>
+                    <li><i class="fa-solid fa-phone"></i> <%= i.category %></li>
+                    <li><i class="fa-solid fa-phone"></i> <%= i.dueDate %></li>
+                </ul>
+                <div class="delete-button">
+                    <a href="/delete-contact/?id=<%= i._id %>">
+                        <i class="fa-solid fa-xmark"></i>
+                    </a>
+                </div>
+            </div>
+        <% } %>
     </div>
     <script src="https://kit.fontawesome.com/d8937fc446.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/TodoList/assets/js/home.js"></script>
