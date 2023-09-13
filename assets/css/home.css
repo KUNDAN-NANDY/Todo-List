@@ -5,12 +5,18 @@ body{
     text-align: center;
     font-family: sans-serif;
 }
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .form_class{
+    border-right: 1px solid #ccc;
     background-color: aliceblue;
     height: 300px;
     width: 400px;
-    margin: auto;
+    margin: 10%;
     border-radius: 5%;
 }
 
@@ -18,7 +24,7 @@ body{
     width: 300px;
     background-color: aliceblue;
     padding: 4%;
-    margin: 30px;
+    margin: 30px 5px;
     border-color: #153677;
     border-radius: 10px;
 }
@@ -94,4 +100,73 @@ body{
 }
 .buttonDesign:focus-visible{
     outline-offset: 1px;
+}
+
+/******* TodoList viewing section style *******/
+
+
+.todo-list-container{
+    padding: 20px;
+    margin: auto;
+    font-family: sans-serif;
+}
+
+.contact-list-container ul{
+    padding: 0;
+    list-style: none;
+}
+
+.tasks {
+    color: #6e92db;
+    display: flex;
+    width: 500px;
+    margin: 5px 40px 5px 0px;
+    padding: 3px 10px;
+    border: 1px solid #000;
+    background-color: aliceblue;
+    box-shadow: 1px 1px 1px 1px #000;;
+    transition: all 0.2s ease-in-out;
+}
+
+.tasks:hover{
+    box-shadow: 0px 0px 2px 1px #749be8;
+    transform: translateX(-10px);
+}
+
+.tasks .tasks-details {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 90%;
+}
+.tasks .delete-button{
+    width: 10%;
+    padding: 3px;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.tasks .delete-button a{
+    color: #153677;
+}
+
+.tasks .delete-button a:hover{
+    color: rgb(249, 24, 24);
+}
+
+/* Add styles for the vertical line */
+.vertical-line {
+    position: absolute;
+    top: 25%;
+    bottom: 0;
+    left: 50%; /* Position it in the middle of the right section */
+    border-left: 2px solid #ccc;
+    content: '';
+    height: 50%;
+}
+
+.success-message.hide {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }

@@ -11,48 +11,54 @@
     
     <!-- Display success message if available -->
     <% if (successMessage) { %>
-        <div class="success-message">
+        <div id="success-message" class="success-message">
             <%= successMessage %>
         </div>
     <% } %>
-
-    <div class="form_class">
-        <form action="/create_todo" method="POST">
-            <div class="desc_Class">
-                <input type="textarea" required class="desc" name="desc" placeholder="Tasks you want to add.."> 
-            </div>
-            <div class="select_and_input">
-                <select class="option" name="category" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option>Personal</option>
-                    <option>Work</option>
-                    <option>Cleaning</option>
-                    <option>Hobbies</option>
-                    <option>Others</option>
-                </select>
-                <input class="datesValues" type="date" name="dateValue" placeholder="Due date dd/mm/yyyy" required>
-            </div>
-            <button class="buttonDesign" id="submitButton" type="submit"><i class="fa fa-plus-square" > </i> Add Task</button>
-        </form>
-    </div>
-
-    <div id="todo-list-container">
-        <% for(let i of todoList) { %> 
-            <div class="task-container">
-                <ul class="task-details">
-                    <li><i class="fa-solid fa-person"></i> <%= i.desc %></li>
-                    <li><i class="fa-solid fa-phone"></i> <%= i.category %></li>
-                    <li><i class="fa-solid fa-phone"></i> <%= i.dueDate %></li>
-                </ul>
-                <div class="delete-button">
-                    <a href="/delete-contact/?id=<%= i._id %>">
-                        <i class="fa-solid fa-xmark"></i>
-                    </a>
+    <div class="container">
+        <div class="form_class">
+            <form action="/create_todo" method="POST">
+                <div class="desc_Class">
+                    <input type="textarea" required class="desc" name="desc" placeholder="Tasks you want to add.."> 
                 </div>
-            </div>
-        <% } %>
+                <div class="select_and_input">
+                    <select class="option" name="category" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option>Personal</option>
+                        <option>Work</option>
+                        <option>Cleaning</option>
+                        <option>Hobbies</option>
+                        <option>Others</option>
+                    </select>
+                    <input class="datesValues" type="date" name="dateValue" placeholder="Due date dd/mm/yyyy" required>
+                </div>
+                <button class="buttonDesign" id="submitButton" type="submit"><i class="fa fa-plus-square" > </i> Add Task</button>
+            </form>
+        </div>
+    
+        <div id="todo-list-container">
+            <ul>
+                <% for(let i of todoList) { %> 
+                    <li class="tasks">
+                        <div class="tasks-details">
+                            <input type="checkbox" name="field name" value="Initial value">
+                            <p><i class="fa-solid fa-thumbtack" style="color: #4e085f;"></i> <%= i.desc %></p>
+                            <p><i class="fa-solid fa-filter" style="color: #4e085f;"></i> <%= i.category %></p>
+                            <p><i class="fa-solid fa-calendar-days" style="color: #4e085f;"></i> <%= i.dueDate %></p>
+                        </div>
+                        <div class="delete-button">
+                            <a href="/delete_todo/?id=<%= i._id %>">
+                                <i class="fa-solid fa-xmark"></i>
+                            </a>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+            <!-- Vertical line -->
+            <div class="vertical-line"></div>
+        </div>
     </div>
     <script src="https://kit.fontawesome.com/d8937fc446.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/TodoList/assets/js/home.js"></script>
+    <script type="text/javascript" src="../assets/js/home.js"></script>
 </body>
 </html>

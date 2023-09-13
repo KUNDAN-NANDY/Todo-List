@@ -74,11 +74,39 @@ module.exports.createTodo = async function(req, res) {
             category: req.body.category,
             dueDate: newdate
         });
+        // Send a success message
+        const successMessage = "Data saved";
 
-        // Redirect to the home page or handle the response as needed
-        return res.redirect('/');
-    } catch (err) {
+        // Redirect to the home page and include the success message as a query parameter
+        return res.redirect('/?successMessage=' + encodeURIComponent(successMessage));
+    } 
+    catch (err) {
         console.error("Error in creating a Todo:", err);
         return res.status(500).send("Error creating a Todo");
+    }
+};
+
+// Deleting A Contact
+module.exports.deleteTodo = async function(req, res){
+    try {
+        // Get the id from the URL query
+        let id = req.query.id;
+
+        // Check if id is provided and valid
+        if (!id) {
+            return res.status(400).send('Invalid or missing Todo id.');
+        }
+
+        // Find the contact by id and delete it
+        const deletedTodo = await TodoLists.findByIdAndDelete(id);
+
+        if (!deletedTodo) {
+            return res.status(404).send('Todo not found.');
+        }
+
+        return res.redirect('/');
+    } catch (err) {
+        console.error('Error deleting a todo from the database:', err);
+        return res.status(500).send('Error deleting todo.');
     }
 };
